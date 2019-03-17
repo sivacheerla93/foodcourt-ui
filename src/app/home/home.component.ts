@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'home-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
     title = 'Home';
+    $: any;
+
+    // ngOnInit() {
+    //     $(document).ready(function () {
+    //         $('.carousel').carousel();
+    //     })
+    // }
 }
+
