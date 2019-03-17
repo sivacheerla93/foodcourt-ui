@@ -1,0 +1,68 @@
+.qty {
+  width: 120px;
+}
+
+.qty .count {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 35px;
+  text-align: center;
+}
+
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+
+.minus:hover {
+  background-color: #717fe0 !important;
+}
+
+.plus:hover {
+  background-color: #717fe0 !important;
+}
+
+/*Prevent text selection*/
+.plus-span,
+.minus-span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.qty-input {
+  border: 0;
+  width: 2%;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-input:disabled {
+  background-color: white;
+}
