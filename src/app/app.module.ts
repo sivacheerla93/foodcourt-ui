@@ -9,10 +9,14 @@ import { routing } from './app.routing';
 
 import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './consumer/order.component';
+import { CheckoutComponent } from './consumer/checkout.component';
+import { SuccessComponent } from './consumer/success.component';
+import { SignUpComponent } from './consumer/signup.component';
+import { SignInComponent } from './consumer/signin.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
-  declarations: [AppComponent, HomeComponent, OrderComponent],
+  declarations: [AppComponent, HomeComponent, OrderComponent, CheckoutComponent, SuccessComponent, SignUpComponent, SignInComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
