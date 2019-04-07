@@ -1,6 +1,7 @@
 #myFooter {
   background-color: #373a48;
   color: white;
+  margin-top: 50px;
 }
 
 #myFooter .footer-copyright {
@@ -46,8 +47,6 @@
 
 #myFooter .social-networks {
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 38px;
 }
 
 #myFooter .social-networks a {

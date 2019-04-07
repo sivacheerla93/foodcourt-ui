@@ -8,6 +8,11 @@
           <table class="table table-hover" style="text-align: left;">
             <thead>
               <tr>
+                <th colspan="5" style="text-align: center;">
+                  <h3>Available Items!</h3>
+                </th>
+              </tr>
+              <tr>
                 <th></th>
                 <th>Item Name</th>
                 <th>Availability</th>
@@ -56,118 +61,70 @@
           <table class="table table-hover" style="text-align: left;">
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th colspan="4" style="text-align: center;">
+                  <h3>Your orders</h3>
+                </th>
+              </tr>
+              <tr>
+                <th>Item name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <td>Mushroom Soup</td>
+                <td>2</td>
+                <td>$300</td>
+                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
               </tr>
               <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
+                <td>Tomato Soup</td>
+                <td>1</td>
+                <td>$200</td>
+                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
               </tr>
               <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
+                <td>Vegetable Soup</td>
+                <td>3</td>
+                <td>$300</td>
+                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+              </tr>
+              <tr>
+                <td colspan="2">Subtotal</td>
+                <td colspan="2">$800</td>
+              </tr>
+              <tr>
+                <td colspan="2">Taxes</td>
+                <td colspan="2">$164</td>
+              </tr>
+              <tr>
+                <td colspan="2"><b>Total</b></td>
+                <td colspan="2"><b>$964</b></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<br />
-<br />
-<br />
-<br />
-
-
-<div class="container" style="width: 90%;">
-  <div class="row">
-    <div class="col-12">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"> </th>
-              <th scope="col">Product</th>
-              <th scope="col">Available</th>
-              <th scope="col" class="text-center">Quantity</th>
-              <th scope="col" class="text-right">Price</th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Dada</td>
-              <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">124,90 €</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Toto</td>
-              <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">33,90 €</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Product Name Titi</td>
-              <td>In stock</td>
-              <td><input class="form-control" type="text" value="1" /></td>
-              <td class="text-right">70,00 €</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Sub-Total</td>
-              <td class="text-right">255,90 €</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Shipping</td>
-              <td class="text-right">6,90 €</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><strong>Total</strong></td>
-              <td class="text-right"><strong>346,90 €</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
     <div class="col mb-2">
       <div class="row">
-        <div class="col-sm-12  col-md-6">
-          <button class="btn btn-block btn-light">Continue Shopping</button>
-        </div>
         <div class="col-sm-12 col-md-6 text-right">
-          <button routerLink="/consumer/order/checkout" class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+          <button routerLink="/" class="btn btn-lg btn-block btn-primary text-uppercase">Back to
+            foodcourts</button>
+        </div>
+        <br />
+        <div class="col-sm-12 col-md-6 text-right">
+          <button routerLink="/consumer/order/checkout"
+            class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<br />
+<br />
+<br />
+<br />
