@@ -1,36 +1,42 @@
-<h2 align='center'><u>{{title}}</u></h2>
+<h3 align='center'><u>{{title}}</u></h3>
 <div class="container">
-  <h3><u>Register New Foodcourt</u></h3>
   <form #formRef="ngForm" novalidate>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required minlength="3">
+    </div>
+    <div class="form-group">
+      <label for="severity">GST Number</label>
       <input type="text" class="form-control" id="description" name="description" required minlength="3">
     </div>
     <div class="form-group">
-      <label for="severity">Severity</label>
-      <select class="form-control" name="severity" required>
-        <option>
-          test
-        </option>
-      </select>
+      <label for="status">Validity</label>
+      <input type="text" class="form-control" id="description" name="description" required minlength="3">
     </div>
     <div class="form-group">
-      <label for="status">Status</label>
-      <select class="form-control" name="status" required>
-        <option>
-          test
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="cd">Created date</label>
+      <label for="cd">Contact Number</label>
       <input type="text" class="form-control" id="cd" name="cd" required>
     </div>
     <div class="form-group">
-      <label for="rd">Resolved date</label>
+      <label for="rd">Email</label>
       <input type="text" class="form-control" id="rd" name="rd" required>
     </div>
-    <button type="submit" class="btn btn-info" [disabled]="formRef.invalid">Submit</button>
+    <div class="form-group">
+      <label for="rd">Locality</label>
+      <input type="text" class="form-control" id="rd" name="rd" required>
+    </div>
+    <div class="form-group">
+      <label for="rd">City</label>
+      <input type="text" class="form-control" id="rd" name="rd" required>
+    </div>
+    <div class="form-group">
+      <label for="rd">Upload Banner Image</label>
+      <input type="file" class="form-control-file" id="rd" name="rd" required>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add
+      Foodcourt</button>&nbsp;&nbsp;
+    <button routerLink="/admin/foodcourts/viewall" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+      Add</button>
   </form>
 </div>
 

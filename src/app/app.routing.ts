@@ -8,6 +8,10 @@ import { UpdateFoodcourtComponent } from './admin/foodcourts/update-foodcourt/up
 
 // Vendor components imports
 import { VendorSignInComponent } from './vendor/signin/vendor-signin.component';
+import { ViewItemsComponent } from './vendor/manage-menu/view-items/view-items.component';
+import { AddItemComponent } from './vendor/manage-menu/add-items/add-item.component';
+import { UpdateItemComponent } from './vendor/manage-menu/update-items/update-item.component';
+import { ManageOrdersComponent } from './vendor/manage-orders/manage-orders.component';
 
 // Consumer components imports
 import { HomeComponent } from './home/home.component';
@@ -24,6 +28,10 @@ const appRoutes: Routes = [
   { path: 'admin/foodcourts/add', component: AddFoodcourtComponent },
   { path: 'admin/foodcourts/update', component: UpdateFoodcourtComponent },
   { path: 'vendor/signin', component: VendorSignInComponent },
+  { path: 'vendor/menu/view', component: ViewItemsComponent },
+  { path: 'vendor/menu/add', component: AddItemComponent },
+  { path: 'vendor/menu/update', component: UpdateItemComponent },
+  { path: 'vendor/orders/manage', component: ManageOrdersComponent },
   { path: 'consumer/signup', component: SignUpComponent },
   { path: 'consumer/signin', component: SignInComponent },
   { path: 'consumer/order', component: OrderComponent },

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./add-foodcourt.component.css']
 })
 export class AddFoodcourtComponent {
-    title = "Add Foodcourt";
+    title = "Register New Foodcourt";
 }

@@ -1,0 +1,28 @@
+<h3 align='center'><u>{{title}}</u></h3>
+<div class="container">
+  <form #formRef="ngForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="Mushroom Soup" required minlength="3">
+    </div>
+    <div class="form-group">
+      <label for="severity">Price</label>
+      <input type="text" class="form-control" id="description" name="description" value="$150" required minlength="3">
+    </div>
+    <div class="form-group">
+      <label for="status">Availability</label>
+      <input type="text" class="form-control" id="description" name="description" value="Hot Selling!" required
+        minlength="3">
+    </div>
+    <div class="form-group">
+      <label for="rd">Change Item Image</label>
+      <input type="file" class="form-control-file" id="rd" name="rd" required>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Update Item</button>&nbsp;&nbsp;
+    <button routerLink="/vendor/menu/view" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+      Update</button>
+  </form>
+</div>
+
+<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br />
