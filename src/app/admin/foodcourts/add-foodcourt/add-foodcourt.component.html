@@ -1,3 +1,39 @@
 <h2 align='center'><u>{{title}}</u></h2>
+<div class="container">
+  <h3><u>Register New Foodcourt</u></h3>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="issue.description"
+        required minlength="3" #descriptionRef="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="severity">Severity</label>
+      <select class="form-control" name="severity" [(ngModel)]="issue.severity" required>
+        <option *ngFor="let severity of severities" [value]="severity">
+          {{severity}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select class="form-control" name="status" [(ngModel)]="issue.status" required>
+        <option *ngFor="let status of statuses" [value]="status">
+          {{status}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cd">Created date</label>
+      <input type="text" class="form-control" id="cd" name="cd" [(ngModel)]="issue.cd" required #cdRef="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="rd">Resolved date</label>
+      <input type="text" class="form-control" id="rd" name="rd" [(ngModel)]="issue.rd" required #rdRef="ngModel">
+    </div>
+    <button type="submit" class="btn btn-info" [disabled]="formRef.invalid">Submit</button>
+  </form>
+</div>
+
 <br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br />
