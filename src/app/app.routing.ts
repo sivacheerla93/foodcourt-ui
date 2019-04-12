@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Admin components imports
 import { AdminSignInComponent } from './admin/signin/admin-signin.component';
 import { ViewFoodcourtsComponent } from './admin/foodcourts/view-foodcourts/view-foodcourts.component';
+import { AddFoodcourtComponent } from './admin/foodcourts/add-foodcourt/add-foodcourt.component';
+import { UpdateFoodcourtComponent } from './admin/foodcourts/update-foodcourt/update-foodcourt.component';
 
 // Vendor components imports
 import { VendorSignInComponent } from './vendor/signin/vendor-signin.component';
@@ -19,6 +21,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin/signin', component: AdminSignInComponent },
   { path: 'admin/foodcourts/viewall', component: ViewFoodcourtsComponent },
+  { path: 'admin/foodcourts/add', component: AddFoodcourtComponent },
+  { path: 'admin/foodcourts/update', component: UpdateFoodcourtComponent },
   { path: 'vendor/signin', component: VendorSignInComponent },
   { path: 'consumer/signup', component: SignUpComponent },
   { path: 'consumer/signin', component: SignInComponent },

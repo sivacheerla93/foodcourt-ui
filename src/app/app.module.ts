@@ -10,6 +10,8 @@ import { routing } from './app.routing';
 // Admin components imports
 import { AdminSignInComponent } from './admin/signin/admin-signin.component';
 import { ViewFoodcourtsComponent } from './admin/foodcourts/view-foodcourts/view-foodcourts.component';
+import { AddFoodcourtComponent } from './admin/foodcourts/add-foodcourt/add-foodcourt.component';
+import { UpdateFoodcourtComponent } from './admin/foodcourts/update-foodcourt/update-foodcourt.component';
 
 // Vendor components imports
 import { VendorSignInComponent } from './vendor/signin/vendor-signin.component';
@@ -25,7 +27,8 @@ import { SuccessComponent } from './consumer/order/success/success.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
-  declarations: [AppComponent, HomeComponent, AdminSignInComponent, ViewFoodcourtsComponent, VendorSignInComponent, SignUpComponent,
+  declarations: [AppComponent, HomeComponent, AdminSignInComponent, ViewFoodcourtsComponent,
+    AddFoodcourtComponent, UpdateFoodcourtComponent, VendorSignInComponent, SignUpComponent,
     SignInComponent, OrderComponent, CheckoutComponent, SuccessComponent],
   providers: [],
   bootstrap: [AppComponent]
