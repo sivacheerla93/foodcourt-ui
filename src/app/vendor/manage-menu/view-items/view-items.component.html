@@ -1,75 +1,69 @@
 <!-- All Items -->
 <div class="container">
   <h3 class="page-header text-center">KFC Chennai - Manage Items</h3>
-  <section style="width: 100%; float: left;">
-    <div style="width: 60%; float: left;">
+  <div class="col-md-12">
+    <div class="col-md-6">
       <div class="input-group">
         <span class="input-group-btn">
           <span class="btn btn-default"><b>Filter By Item Name: </b></span>
         </span>
         <input type="text" class="form-control" placeholder="Search...">
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-    <div style="width: 20%; float: left; text-align: center">
-      <a routerLink="/vendor/menu/add" class="btn btn-success">Add New Item</a>
-    </div>
-    <div style="width: 20%; float: left; text-align: center">
-      <a routerLink="/vendor/orders/manage" class="btn btn-warning">View Live Orders</a>
-    </div>
-  </section><!-- /.row -->
-  <br />
-  <br />
-  <br />
-  <br />
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="row placeholders">
-        <div class="col-sm-12 placeholder">
-          <table class="table table-hover" style="text-align: left;">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Price</th>
-                <th>Availability</th>
-                <th>Update</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                <td>ITM150</td>
-                <td>Mushroom Soup</td>
-                <td>$150</td>
-                <td>Hot Selling!</td>
-                <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
-                <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
-              </tr>
-              <tr>
-                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                <td>ITM150</td>
-                <td>Tomato Soup</td>
-                <td>$200</td>
-                <td>Available!</td>
-                <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
-                <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
-              </tr>
-              <tr>
-                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                <td>ITM150</td>
-                <td>Vegetable Soup</td>
-                <td>$100</td>
-                <td>Out Of Stock!</td>
-                <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
-                <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
+    <div class="col-md-3 text-center">
+      <a routerLink="/vendor/menu/add" class="btn btn-success">Add New Item</a>
+    </div>
+    <div class="col-md-3 text-center">
+      <a routerLink="/vendor/orders/manage" class="btn btn-warning">View Live Orders</a>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="table-responsive">
+    <table class="table table-hover" style="text-align: left;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item ID</th>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+          <td>ITM150</td>
+          <td>Mushroom Soup</td>
+          <td>$150</td>
+          <td>Hot Selling!</td>
+          <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
+          <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+          <td>ITM150</td>
+          <td>Tomato Soup</td>
+          <td>$200</td>
+          <td>Available!</td>
+          <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
+          <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+          <td>ITM150</td>
+          <td>Vegetable Soup</td>
+          <td>$100</td>
+          <td>Out Of Stock!</td>
+          <td><a routerLink="/vendor/menu/update" class="btn btn-primary">Update</a></td>
+          <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

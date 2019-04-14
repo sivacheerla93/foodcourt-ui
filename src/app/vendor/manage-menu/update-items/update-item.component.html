@@ -18,9 +18,11 @@
       <label for="rd">Change Item Image</label>
       <input type="file" class="form-control-file" id="rd" name="rd" required>
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Update Item</button>&nbsp;&nbsp;
-    <button routerLink="/vendor/menu/view" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
-      Update</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Update Item</button>&nbsp;&nbsp;
+      <button routerLink="/vendor/menu/view" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+        Update</button>
+    </div>
   </form>
 </div>
 

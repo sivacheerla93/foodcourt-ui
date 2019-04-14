@@ -17,9 +17,11 @@
       <label for="rd">Upload Item Image</label>
       <input type="file" class="form-control-file" id="rd" name="rd" required>
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add Item</button>&nbsp;&nbsp;
-    <button routerLink="/vendor/menu/view" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
-      Add</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add Item</button>&nbsp;&nbsp;
+      <button routerLink="/vendor/menu/view" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+        Add</button>
+    </div>
   </form>
 </div>
 

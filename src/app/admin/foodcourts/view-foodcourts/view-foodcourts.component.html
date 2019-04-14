@@ -1,68 +1,74 @@
 <h2 align='center'><u>{{title}}</u></h2>
-<div>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
-      <div class="input-group">
-        <span class="input-group-btn">
-          <span class="btn btn-default"><b>Filter By Foodcourt Name: </b></span>
-        </span>
-        <input type="text" class="form-control" placeholder="Search...">
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-    <div>
-      <a routerLink="/admin/foodcourts/add" class="btn btn-success">Register New Foodcourt</a>
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <span class="btn btn-default"><b>Filter By Foodcourt Name: </b></span>
+          </span>
+          <input type="text" class="form-control" placeholder="Search...">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <a routerLink="/admin/foodcourts/add" class="btn btn-success">Register New Foodcourt</a>
+        </div>
+      </div>
     </div>
-  </div><!-- /.row -->
+  </div>
+  <br />
+  <div class="table-responsive">
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>Foodcourt ID</th>
+          <th>
+            Name
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            GST No
+          </th>
+          <th>Email ID</th>
+          <th>
+            Contact Details
+          </th>
+          <th>
+            Validity
+          </th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a routerLink="/"><u>100</u></a>
+          </td>
+          <td>
+            KFC
+          </td>
+          <td>
+            Chennai
+          </td>
+          <td>
+            GSTAP12345668
+          </td>
+          <td>kfc.chennai@foodcourt.in</td>
+          <td>
+            1234567890
+          </td>
+          <td>
+            15th March, 2019
+          </td>
+          <td><a routerLink="/admin/foodcourts/update" class="btn btn-primary">Update</a></td>
+          <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<br />
-<table class='table table-bordered'>
-  <thead>
-    <tr>
-      <th>Foodcourt ID</th>
-      <th>
-        Name
-      </th>
-      <th>
-        Address
-      </th>
-      <th>
-        GST No
-      </th>
-      <th>Email ID</th>
-      <th>
-        Contact Details
-      </th>
-      <th>
-        Validity
-      </th>
-      <th>Update</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <a routerLink="/"><u>100</u></a>
-      </td>
-      <td>
-        KFC
-      </td>
-      <td>
-        Chennai
-      </td>
-      <td>
-        GSTAP12345668
-      </td>
-      <td>kfc.chennai@foodcourt.in</td>
-      <td>
-        1234567890
-      </td>
-      <td>
-        15th March, 2019
-      </td>
-      <td><a routerLink="/admin/foodcourts/update" class="btn btn-primary">Update</a></td>
-      <td><a routerLink="/" class="btn btn-danger">Delete</a></td>
-    </tr>
-  </tbody>
-</table>
 <br /><br /><br /><br /><br /><br /><br />

@@ -6,20 +6,28 @@
       <input type="text" class="form-control" id="name" name="name" required minlength="3">
     </div>
     <div class="form-group">
-      <label for="severity">GST Number</label>
-      <input type="text" class="form-control" id="description" name="description" required minlength="3">
+      <label for="rd">Email</label>
+      <input type="text" class="form-control" id="rd" name="rd" required>
     </div>
     <div class="form-group">
-      <label for="status">Validity</label>
-      <input type="text" class="form-control" id="description" name="description" required minlength="3">
+      <label for="rd">Password</label>
+      <input type="password" class="form-control" id="rd" name="rd" required>
+    </div>
+    <div class="form-group">
+      <label for="rd">Re-enter Password</label>
+      <input type="password" class="form-control" id="rd" name="rd" required>
     </div>
     <div class="form-group">
       <label for="cd">Contact Number</label>
       <input type="text" class="form-control" id="cd" name="cd" required>
     </div>
     <div class="form-group">
-      <label for="rd">Email</label>
-      <input type="text" class="form-control" id="rd" name="rd" required>
+      <label for="severity">GST Number</label>
+      <input type="text" class="form-control" id="description" name="description" required minlength="3">
+    </div>
+    <div class="form-group">
+      <label for="status">Validity</label>
+      <input type="text" class="form-control" id="description" name="description" required minlength="3">
     </div>
     <div class="form-group">
       <label for="rd">Locality</label>
@@ -33,12 +41,13 @@
       <label for="rd">Upload Banner Image</label>
       <input type="file" class="form-control-file" id="rd" name="rd" required>
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add
-      Foodcourt</button>&nbsp;&nbsp;
-    <button routerLink="/admin/foodcourts/viewall" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
-      Add</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add
+        Foodcourt</button>&nbsp;&nbsp;
+      <button routerLink="/admin/foodcourts/viewall" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+        Add</button>
+    </div>
   </form>
 </div>
 
 <br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br />
