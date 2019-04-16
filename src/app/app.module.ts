@@ -6,6 +6,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
+import { AppService } from './app.service';
 
 // Admin components imports
 import { AdminSignInComponent } from './admin/signin/admin-signin.component';
@@ -35,7 +36,7 @@ import { SuccessComponent } from './consumer/order/success/success.component';
     AddFoodcourtComponent, UpdateFoodcourtComponent, VendorSignInComponent, ViewItemsComponent,
     AddItemComponent, UpdateItemComponent, ManageOrdersComponent, SignUpComponent,
     SignInComponent, OrderComponent, CheckoutComponent, SuccessComponent],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,25 +44,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let foodcourt of foodcourts">
           <td>
-            <a routerLink="/"><u>100</u></a>
+            <a routerLink="/"><u>{{foodcourt.id}}</u></a>
           </td>
           <td>
-            KFC
+            {{foodcourt.name}}
           </td>
           <td>
-            Chennai
+            {{foodcourt.address.city}}
           </td>
           <td>
-            GSTAP12345668
+            {{foodcourt.gst}}
           </td>
-          <td>kfc.chennai@foodcourt.in</td>
+          <td>{{foodcourt.contact.email}}</td>
           <td>
-            1234567890
+            {{foodcourt.contact.mobile}}
           </td>
           <td>
-            15th March, 2019
+            {{foodcourt.validity}}
           </td>
           <td><a routerLink="/admin/foodcourts/update" class="btn btn-primary">Update</a></td>
           <td><a routerLink="/" class="btn btn-danger">Delete</a></td>

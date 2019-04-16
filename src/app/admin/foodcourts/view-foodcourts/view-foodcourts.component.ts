@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from '../../../app.service';
 
 @Component({
     selector: 'view-foodcourts-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class ViewFoodcourtsComponent {
     title = "All Foodcourts";
+    foodcourts: any = [];
+
+    constructor(private _issuesService: AppService) {
+    }
+
+    ngOnInit(): void {
+        this.getAllFoodcourts();
+    }
+
+    getAllFoodcourts() {
+        this._issuesService.getAllFoodcourts().subscribe(
+            (_foodcourts: any) => this.foodcourts = _foodcourts,
+            err => console.log(err)
+        );
+    }
 }
