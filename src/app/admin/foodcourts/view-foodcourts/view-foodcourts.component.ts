@@ -10,7 +10,7 @@ export class ViewFoodcourtsComponent {
     title = "All Foodcourts";
     foodcourts: any = [];
 
-    constructor(private _issuesService: AppService) {
+    constructor(private _foodcourtsService: AppService) {
     }
 
     ngOnInit(): void {
@@ -18,7 +18,7 @@ export class ViewFoodcourtsComponent {
     }
 
     getAllFoodcourts() {
-        this._issuesService.getAllFoodcourts().subscribe(
+        this._foodcourtsService.getAllFoodcourts().subscribe(
             (_foodcourts: any) => this.foodcourts = _foodcourts,
             err => console.log(err)
         );
