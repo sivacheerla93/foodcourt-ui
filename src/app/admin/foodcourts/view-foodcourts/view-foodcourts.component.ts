@@ -23,4 +23,10 @@ export class ViewFoodcourtsComponent {
             err => console.log(err)
         );
     }
+
+    deleteFoodcourt(foodcourtId) {
+        this._foodcourtsService.deleteFoodcourt(foodcourtId).subscribe(
+            (data: any) => this.getAllFoodcourts(),
+            err => console.log(err));
+    }
 }

@@ -4,8 +4,8 @@
     <div class="col-sm-12">
       <h3 class="page-header text-center" style="padding-top: 20px;">All Food courts</h3>
       <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let foodcourt of foodcourts">
-          <img src={{foodcourtImages[0]}} width="auto" height="auto" class="img-responsive"
+        <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let foodcourt of foodcourts; index as i">
+          <img src={{foodcourt.img.data.data}} width="auto" height="auto" class="img-responsive"
             alt="Generic placeholder thumbnail">
           <h4>{{foodcourt.name}}</h4>
           <span class="text-muted">{{foodcourt.address.locality}} - {{foodcourt.address.city}}</span>

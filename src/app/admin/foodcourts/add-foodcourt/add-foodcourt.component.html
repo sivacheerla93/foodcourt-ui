@@ -1,50 +1,54 @@
 <h3 align='center'><u>{{title}}</u></h3>
 <div class="container">
-  <form #formRef="ngForm" novalidate>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" required minlength="3">
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="foodcourt.name" required
+        #nameRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="rd">Email</label>
-      <input type="text" class="form-control" id="rd" name="rd" required>
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" name="email" [(ngModel)]="foodcourt.email" required
+        #emailRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="rd">Password</label>
-      <input type="password" class="form-control" id="rd" name="rd" required>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="foodcourt.password"
+        required #passwordRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="rd">Re-enter Password</label>
-      <input type="password" class="form-control" id="rd" name="rd" required>
+      <label for="mobile">Contact Number</label>
+      <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="foodcourt.mobile" required
+        #mobileRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="cd">Contact Number</label>
-      <input type="text" class="form-control" id="cd" name="cd" required>
+      <label for="gst">GST Number</label>
+      <input type="text" class="form-control" id="gst" name="gst" [(ngModel)]="foodcourt.gst" required
+        #gstRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="severity">GST Number</label>
-      <input type="text" class="form-control" id="description" name="description" required minlength="3">
+      <label for="validity">Validity</label>
+      <input type="text" class="form-control" id="validity" name="validity" [(ngModel)]="foodcourt.validity" required
+        #validityRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="status">Validity</label>
-      <input type="text" class="form-control" id="description" name="description" required minlength="3">
+      <label for="locality">Locality</label>
+      <input type="text" class="form-control" id="locality" name="locality" [(ngModel)]="foodcourt.locality" required
+        #localityRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="rd">Locality</label>
-      <input type="text" class="form-control" id="rd" name="rd" required>
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" name="city" [(ngModel)]="foodcourt.city" required
+        #cityRef="ngModel">
     </div>
     <div class="form-group">
-      <label for="rd">City</label>
-      <input type="text" class="form-control" id="rd" name="rd" required>
-    </div>
-    <div class="form-group">
-      <label for="rd">Upload Banner Image</label>
-      <input type="file" class="form-control-file" id="rd" name="rd" required>
+      <label for="image">Upload Banner Image</label>
+      <input type="file" class="form-control-file" id="image" name="image">
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add
         Foodcourt</button>&nbsp;&nbsp;
-      <button routerLink="/admin/foodcourts/viewall" class="btn btn-danger" [disabled]="formRef.invalid">Cancel
+      <button routerLink="/admin/foodcourts/viewall" class="btn btn-danger">Cancel
         Add</button>
     </div>
   </form>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { jsonpCallbackContext } from '@angular/common/http/src/module';
 
 @Component({
     selector: 'home-root',
@@ -10,7 +9,6 @@ import { jsonpCallbackContext } from '@angular/common/http/src/module';
 export class HomeComponent implements OnInit {
     title = 'Home';
     foodcourts: any = [];
-    foodcourtImages: any = [];
 
     constructor(private _foodcourtsService: AppService) {
     }
@@ -34,7 +32,7 @@ export class HomeComponent implements OnInit {
                     bytes.forEach((b) => binary += String.fromCharCode(b));
                     var imgStr = window.btoa(binary);
                     var base64Img = base64Flag + imgStr;
-                    this.foodcourtImages.push(base64Img);
+                    element.img.data.data = base64Img;
                 });
             },
             err => console.log(err)
