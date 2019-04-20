@@ -18,8 +18,16 @@ export class AppService {
         return this._http.get(this.serviceUrl + "/admin/foodcourts");
     }
 
+    getSingleFoodcourt(fid) {
+        return this._http.get(this.serviceUrl + "/admin/foodcourts/" + fid);
+    }
+
     registerFoodcourt(foodcourt: any) {
         return this._http.post(this.serviceUrl + "/admin/foodcourts", JSON.stringify(foodcourt), this.httpOptions);
+    }
+
+    updateFoodcourt(updatedFC) {
+        return this._http.put(this.serviceUrl + "/admin/foodcourts/" + updatedFC.id, JSON.stringify(updatedFC), this.httpOptions);
     }
 
     deleteFoodcourt(foodcourtId) {

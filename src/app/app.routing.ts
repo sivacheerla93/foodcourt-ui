@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'admin/signin', component: AdminSignInComponent },
   { path: 'admin/foodcourts/viewall', component: ViewFoodcourtsComponent },
   { path: 'admin/foodcourts/add', component: AddFoodcourtComponent },
-  { path: 'admin/foodcourts/update', component: UpdateFoodcourtComponent },
+  { path: 'admin/foodcourts/update/:id', component: UpdateFoodcourtComponent },
   { path: 'vendor/signin', component: VendorSignInComponent },
   { path: 'vendor/menu/view', component: ViewItemsComponent },
   { path: 'vendor/menu/add', component: AddItemComponent },

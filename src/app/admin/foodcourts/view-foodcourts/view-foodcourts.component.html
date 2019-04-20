@@ -64,7 +64,7 @@
           <td>
             {{foodcourt.validity}}
           </td>
-          <td><a routerLink="/admin/foodcourts/update" class="btn btn-primary">Update</a></td>
+          <td><a [routerLink]="['/admin/foodcourts/update', foodcourt.id]" class="btn btn-primary">Update</a></td>
           <td><a (click)="deleteFoodcourt(foodcourt.id)" class="btn btn-danger">Delete</a></td>
         </tr>
       </tbody>
