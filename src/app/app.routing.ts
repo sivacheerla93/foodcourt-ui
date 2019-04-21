@@ -30,11 +30,11 @@ const appRoutes: Routes = [
   { path: 'vendor/signin', component: VendorSignInComponent },
   { path: 'vendor/menu/view', component: ViewItemsComponent },
   { path: 'vendor/menu/add', component: AddItemComponent },
-  { path: 'vendor/menu/update', component: UpdateItemComponent },
+  { path: 'vendor/menu/update/:id', component: UpdateItemComponent },
   { path: 'vendor/orders/manage', component: ManageOrdersComponent },
   { path: 'consumer/signup', component: SignUpComponent },
   { path: 'consumer/signin', component: SignInComponent },
-  { path: 'consumer/order', component: OrderComponent },
+  { path: 'consumer/order/:id', component: OrderComponent },
   { path: 'consumer/order/checkout', component: CheckoutComponent },
   { path: 'consumer/order/success', component: SuccessComponent }
 ];

@@ -33,4 +33,28 @@ export class AppService {
     deleteFoodcourt(foodcourtId) {
         return this._http.delete(this.serviceUrl + "/admin/foodcourts/" + foodcourtId);
     }
+
+    // vendor routes
+    getAllItems(fId) {
+        return this._http.get(this.serviceUrl + "/vendor/items/foodcourt/" + fId);
+    }
+
+    getSingleItem(iId) {
+        return this._http.get(this.serviceUrl + "/vendor/items/" + iId);
+    }
+
+    addItem(item: any) {
+        return this._http.post(this.serviceUrl + "/vendor/items", JSON.stringify(item), this.httpOptions);
+    }
+
+    updateItem(updatedItem) {
+        return this._http.put(this.serviceUrl + "/vendor/items/" + updatedItem.id, JSON.stringify(updatedItem), this.httpOptions);
+    }
+
+    deleteItem(itemId) {
+        return this._http.delete(this.serviceUrl + "/vendor/items/" + itemId);
+    }
+
+    // consumer routes
+
 }

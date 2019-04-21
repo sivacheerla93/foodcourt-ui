@@ -5,29 +5,13 @@
       <h3 class="page-header text-center" style="padding-top: 20px;">All Food courts</h3>
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let foodcourt of foodcourts; index as i">
-          <img src={{foodcourt.img.data.data}} width="auto" height="auto" class="img-responsive"
-            alt="Generic placeholder thumbnail">
-          <h4>{{foodcourt.name}}</h4>
-          <span class="text-muted">{{foodcourt.address.locality}} - {{foodcourt.address.city}}</span>
+          <a [routerLink]="['consumer/order', foodcourt.id]">
+            <img src={{foodcourt.img.data.data}} width="auto" height="auto" class="img-responsive"
+              alt="Generic placeholder thumbnail">
+            <h4>{{foodcourt.name}}</h4>
+            <span class="text-muted">{{foodcourt.address.locality}} - {{foodcourt.address.city}}</span>
+          </a>
         </div>
-        <!-- <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="./assets/images/all/img2.jpg" width="auto" height="auto" class="img-responsive"
-            alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="./assets/images/all/img3.jpg" width="auto" height="auto" class="img-responsive"
-            alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="./assets/images/all/img4.jpg" width="auto" height="auto" class="img-responsive"
-            alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div> -->
       </div>
     </div>
   </div>

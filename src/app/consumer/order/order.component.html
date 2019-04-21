@@ -20,33 +20,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Mushroom Soup</td>
-              <td>Hot Selling!</td>
-              <td>$150</td>
-              <td class="qty">
-                <span class="minus-span minus bg-dark">-</span>
-                <input type="number" class="qty-input count" name="qty" value="1">
-                <span class="plus-span plus bg-dark">+</span>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Tomato Soup</td>
-              <td>Available!</td>
-              <td>$200</td>
-              <td class="qty">
-                <span class="minus-span minus bg-dark">-</span>
-                <input type="number" class="qty-input count" name="qty" value="1">
-                <span class="plus-span plus bg-dark">+</span>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-              <td>Vegetable Soup</td>
-              <td>Out Of Stock!</td>
-              <td>$100</td>
+            <tr *ngFor="let item of items">
+              <td><img src={{item.img.data.data}} /> </td>
+              <td>{{item.name}}</td>
+              <td>{{item.availability}}</td>
+              <td>{{item.price}}</td>
               <td class="qty">
                 <span class="minus-span minus bg-dark">-</span>
                 <input type="number" class="qty-input count" name="qty" value="1">
