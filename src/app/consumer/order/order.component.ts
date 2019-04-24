@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppService } from '../../app.service';
 import { Item } from '../../schemas/Item';
+import { ManageOrdersComponent } from 'src/app/vendor/manage-orders/manage-orders.component';
 
 @Component({
     selector: 'order-root',
@@ -12,6 +13,7 @@ export class OrderComponent implements OnInit {
     title = 'Home';
     id: any;
     items: any = [];
+    orders: any = [];
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
     }
@@ -33,21 +35,39 @@ export class OrderComponent implements OnInit {
                 element.img.data.data = base64Img;
             });
         }, err => console.log(err));
+    }
 
-        // For quantity spinner
-        $(document).ready(function () {
-            $('.count').prop('disabled', true);
-            $(document).on('click', '.plus', function () {
-                $('.count').val(Number($('.count').val()) + 1);
-            });
-            $(document).on('click', '.minus', function () {
-                $('.count').val(Number($('.count').val()) - 1);
-                if ($('.count').val() == 0) {
-                    $('.count').val(1);
-                }
-            });
+    addItem(itemNo, itemName) {
+        const component = this;
+        let itemId = itemNo;
+        let plusId = '#plus' + itemId;
+        let counterId = '#counter' + itemId;
+        let item;
+        let counterVal = Number($(counterId).val());
+        $(plusId).click(function () {
+            $(counterId).val(Number(counterVal + 1));
+            if ($(counterId).val() > 0) {
+                item = { name: itemName, quantity: counterVal };
+                component.addItemToOrders(item);
+            }
         });
     }
 
+    removeItem(itemNo, itemName) {
+        let itemId = itemNo;
+        let minusId = '#minus' + itemId;
+        let counterId = '#counter' + itemId;
+        let counterVal = Number($(counterId).val());
+        $(minusId).click(function () {
+            $(counterId).val(Number(counterVal - 1));
+            if ($(counterId).val() == 0 || $(counterId).val() < 0) {
+                $(counterId).val(Number(0));
+            }
+        });
+    }
+
+    addItemToOrders(item) {
+        console.log(item.quantity);
+    }
 
 }

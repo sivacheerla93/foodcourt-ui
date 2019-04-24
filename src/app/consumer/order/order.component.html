@@ -20,15 +20,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of items">
+            <tr *ngFor="let item of items; let i = index">
               <td><img src={{item.img.data.data}} /> </td>
               <td>{{item.name}}</td>
               <td>{{item.availability}}</td>
               <td>{{item.price}}</td>
               <td class="qty">
-                <span class="minus-span minus bg-dark">-</span>
-                <input type="number" class="qty-input count" name="qty" value="1">
-                <span class="plus-span plus bg-dark">+</span>
+                <span class="minus-span minus bg-dark" id="minus{{i}}" (click)="removeItem(i)">-</span>
+                <input type="number" class="qty-input count" id="counter{{i}}" name="qty" value="0" disabled>
+                <span class="plus-span plus bg-dark" id="plus{{i}}" (click)="addItem(i, item.name)">+</span>
               </td>
             </tr>
           </tbody>
