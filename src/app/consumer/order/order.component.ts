@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit {
     title = 'Home';
     id: any;
     items: any = [];
-    orders: any = [];
+    orders = [];
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
     }
@@ -37,37 +37,37 @@ export class OrderComponent implements OnInit {
         }, err => console.log(err));
     }
 
-    addItem(itemNo, itemName) {
-        const component = this;
-        let itemId = itemNo;
-        let plusId = '#plus' + itemId;
-        let counterId = '#counter' + itemId;
+    addItem(itemNo, itemName, itemPrice) {
+        let counterId = '#counter' + itemNo;
         let item;
-        let counterVal = Number($(counterId).val());
-        $(plusId).click(function () {
-            $(counterId).val(Number(counterVal + 1));
-            if ($(counterId).val() > 0) {
-                item = { name: itemName, quantity: counterVal };
-                component.addItemToOrders(item);
-            }
-        });
+
+        var count = Number($(counterId).val());
+        $(counterId).val(count + 1);
+
+        if (Number($(counterId).val()) == 1) {
+            item = { id: Number(itemNo), name: itemName, quantity: Number($(counterId).val()), price: itemPrice };
+            this.orders.push(item);
+        } else if (Number($(counterId).val()) > 1) {
+            this.orders[itemNo].quantity = Number($(counterId).val());
+            this.orders[itemNo].price = Number($(counterId).val()) * itemPrice;
+        }
     }
 
-    removeItem(itemNo, itemName) {
+    removeItem(itemNo, itemName, itemPrice) {
         let itemId = itemNo;
-        let minusId = '#minus' + itemId;
-        let counterId = '#counter' + itemId;
-        let counterVal = Number($(counterId).val());
-        $(minusId).click(function () {
-            $(counterId).val(Number(counterVal - 1));
-            if ($(counterId).val() == 0 || $(counterId).val() < 0) {
-                $(counterId).val(Number(0));
+        let counterId = '#counter' + itemNo;
+
+        var count = Number($(counterId).val());
+        $(counterId).val(count - 1);
+
+        if (Number($(counterId).val()) < 0) {
+            $(counterId).val(Number(0));
+        } else if (Number($(counterId).val()) == 0) {
+            for (let i = 0; i < this.orders.length; i++) {
+                if (this.orders[i].id == Number(itemNo)) {
+                    this.orders.splice(this.orders[i], 1);
+                }
             }
-        });
+        }
     }
-
-    addItemToOrders(item) {
-        console.log(item.quantity);
-    }
-
 }

@@ -26,9 +26,10 @@
               <td>{{item.availability}}</td>
               <td>{{item.price}}</td>
               <td class="qty">
-                <span class="minus-span minus bg-dark" id="minus{{i}}" (click)="removeItem(i)">-</span>
+                <span class="minus-span minus bg-dark" id="minus{{i}}"
+                  (click)="removeItem(i, item.name, item.price)">-</span>
                 <input type="number" class="qty-input count" id="counter{{i}}" name="qty" value="0" disabled>
-                <span class="plus-span plus bg-dark" id="plus{{i}}" (click)="addItem(i, item.name)">+</span>
+                <span class="plus-span plus bg-dark" id="plus{{i}}" (click)="addItem(i, item.name, item.price)">+</span>
               </td>
             </tr>
           </tbody>
@@ -50,22 +51,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Mushroom Soup</td>
-              <td>2</td>
-              <td>$300</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td>Tomato Soup</td>
-              <td>1</td>
-              <td>$200</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-            </tr>
-            <tr>
-              <td>Vegetable Soup</td>
-              <td>3</td>
-              <td>$300</td>
+            <tr *ngFor="let order of orders">
+              <td>{{order.name}}</td>
+              <td>{{order.quantity}}</td>
+              <td>{{order.price}}</td>
               <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
             </tr>
             <tr>
