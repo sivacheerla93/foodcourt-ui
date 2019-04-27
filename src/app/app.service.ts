@@ -55,6 +55,15 @@ export class AppService {
         return this._http.delete(this.serviceUrl + "/vendor/items/" + itemId);
     }
 
-    // consumer routes
+    getAllOrders(fId) {
+        return this._http.get(this.serviceUrl + "/consumer/orders/" + fId);
+    }
 
+    createNewOrder(order: any) {
+        return this._http.post(this.serviceUrl + "/consumer/orders", JSON.stringify(order), this.httpOptions);
+    }
+
+    updateOrder(order: any) {
+        return this._http.put(this.serviceUrl + "/consumer/orders/" + order.id, JSON.stringify(order), this.httpOptions);
+    }
 }

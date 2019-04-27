@@ -16,108 +16,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let order of orders">
           <td>
-            <a routerLink="/"><u>100</u></a>
+            <a routerLink="/"><u>{{order.id}}</u></a>
+          </td>
+          <td>
+            {{order.description}}
           </td>
           <td>
             <table>
               <tr>
-                <td>Mushroom Soup - </td>
-                <td>3</td>
+                {{order.delivery.name}},
               </tr>
               <tr>
-                <td>Tomato Soup - </td>
-                <td>4</td>
+                {{order.delivery.mobile}},
               </tr>
               <tr>
-                <td>Vegetable Soup - </td>
-                <td>1</td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                Johnson Erick,
+                {{order.delivery.locality}},
               </tr>
               <tr>
-                1234567890,
-              </tr>
-              <tr>
-                T. Nagar, Chennai.
-              </tr>
-            </table>
-          </td>
-          <td><a routerLink="/vendor/menu/view" class="btn btn-success">Accept</a></td>
-          <td><a routerLink="/vendor/menu/view" class="btn btn-danger">Reject</a></td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/"><u>100</u></a>
-          </td>
-          <td>
-            <table>
-              <tr>
-                <td>Mushroom Soup - </td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Tomato Soup - </td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>Vegetable Soup - </td>
-                <td>1</td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                Johnson Erick,
-              </tr>
-              <tr>
-                1234567890,
-              </tr>
-              <tr>
-                T. Nagar, Chennai.
-              </tr>
-            </table>
-          </td>
-          <td><a routerLink="/vendor/menu/view" class="btn btn-success">Accept</a></td>
-          <td><a routerLink="/vendor/menu/view" class="btn btn-danger">Reject</a></td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/"><u>100</u></a>
-          </td>
-          <td>
-            <table>
-              <tr>
-                <td>Mushroom Soup - </td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Tomato Soup - </td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>Vegetable Soup - </td>
-                <td>1</td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                Johnson Erick,
-              </tr>
-              <tr>
-                1234567890,
-              </tr>
-              <tr>
-                T. Nagar, Chennai.
+                {{order.delivery.city}}.
               </tr>
             </table>
           </td>

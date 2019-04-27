@@ -47,7 +47,6 @@
               <th>Item name</th>
               <th>Quantity</th>
               <th>Price</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -55,19 +54,18 @@
               <td>{{order.name}}</td>
               <td>{{order.quantity}}</td>
               <td>{{order.price}}</td>
-              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
             </tr>
             <tr>
               <td colspan="2">Subtotal</td>
-              <td colspan="2">$800</td>
+              <td colspan="2">{{subtotal}}</td>
             </tr>
             <tr>
               <td colspan="2">Taxes</td>
-              <td colspan="2">$164</td>
+              <td colspan="2">{{taxes}}</td>
             </tr>
             <tr>
               <td colspan="2"><b>Total</b></td>
-              <td colspan="2"><b>$964</b></td>
+              <td colspan="2"><b>{{total}}</b></td>
             </tr>
           </tbody>
         </table>
@@ -75,12 +73,11 @@
     </div>
     <div class="col-md-12">
       <div class="col-md-6">
-        <button routerLink="/" class="btn btn-lg btn-block btn-primary text-uppercase">Back to
+        <button (click)="backToFoodcourts()" class="btn btn-lg btn-block btn-primary text-uppercase">Back to
           foodcourts</button>
       </div>
       <div class="col-md-6">
-        <button routerLink="/consumer/order/checkout"
-          class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+        <button (click)="checkout()" class="btn btn-lg btn-block btn-success text-uppercase">Continue to Pay</button>
       </div>
     </div>
   </div>

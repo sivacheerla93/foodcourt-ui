@@ -35,8 +35,8 @@ const appRoutes: Routes = [
   { path: 'consumer/signup', component: SignUpComponent },
   { path: 'consumer/signin', component: SignInComponent },
   { path: 'consumer/order/:id', component: OrderComponent },
-  { path: 'consumer/order/checkout', component: CheckoutComponent },
-  { path: 'consumer/order/success', component: SuccessComponent }
+  { path: 'consumer/order-checkout', component: CheckoutComponent },
+  { path: 'consumer/order-success', component: SuccessComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppService } from '../../app.service';
-import { Item } from '../../schemas/Item';
-import { ManageOrdersComponent } from 'src/app/vendor/manage-orders/manage-orders.component';
+import { Order } from '../../schemas/Order';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'order-root',
@@ -14,8 +14,14 @@ export class OrderComponent implements OnInit {
     id: any;
     items: any = [];
     orders = [];
+    subtotal: number = 0;
+    taxes: number = 0;
+    total: number = 0;
+    description: string = '';
+    order: any;
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
+        this.order = new Order();
     }
 
     ngOnInit() {
@@ -45,16 +51,22 @@ export class OrderComponent implements OnInit {
         $(counterId).val(count + 1);
 
         if (Number($(counterId).val()) == 1) {
-            item = { id: Number(itemNo), name: itemName, quantity: Number($(counterId).val()), price: itemPrice };
+            item = { itemNo: Number(itemNo), name: itemName, quantity: Number($(counterId).val()), price: Number(itemPrice) };
             this.orders.push(item);
+            this.calculateAmount(Number(itemPrice), 'add');
         } else if (Number($(counterId).val()) > 1) {
-            this.orders[itemNo].quantity = Number($(counterId).val());
-            this.orders[itemNo].price = Number($(counterId).val()) * itemPrice;
+            for (var i = 0; i < this.orders.length; i++) {
+                if (this.orders[i].itemNo == Number(itemNo)) {
+                    this.orders[i].quantity = Number($(counterId).val());
+                    this.orders[i].price = Number($(counterId).val()) * Number(itemPrice);
+                    this.calculateAmount(Number(itemPrice), 'add');
+                    break;
+                }
+            }
         }
     }
 
     removeItem(itemNo, itemName, itemPrice) {
-        let itemId = itemNo;
         let counterId = '#counter' + itemNo;
 
         var count = Number($(counterId).val());
@@ -63,11 +75,59 @@ export class OrderComponent implements OnInit {
         if (Number($(counterId).val()) < 0) {
             $(counterId).val(Number(0));
         } else if (Number($(counterId).val()) == 0) {
-            for (let i = 0; i < this.orders.length; i++) {
-                if (this.orders[i].id == Number(itemNo)) {
-                    this.orders.splice(this.orders[i], 1);
+            for (var i = 0; i < this.orders.length; i++) {
+                if (this.orders[i].itemNo == Number(itemNo)) {
+                    this.orders.splice(i, 1);
+                    this.calculateAmount(Number(itemPrice), 'remove');
+                    break;
                 }
             }
+        } else if (Number($(counterId).val()) > 0) {
+            for (var i = 0; i < this.orders.length; i++) {
+                if (this.orders[i].itemNo == Number(itemNo)) {
+                    this.orders[i].quantity = Number($(counterId).val());
+                    this.orders[i].price = Number($(counterId).val()) * Number(itemPrice);
+                    this.calculateAmount(Number(itemPrice), 'remove');
+                    break;
+                }
+            }
+        }
+    }
+
+    calculateAmount(amount, flag) {
+        if (flag == 'add') {
+            this.subtotal += amount;
+        } else if (flag == 'remove') {
+            this.subtotal -= amount;
+        }
+
+        this.taxes = (this.subtotal / 100) * 18;
+        this.total = this.subtotal + this.taxes;
+    }
+
+    backToFoodcourts() {
+        var i = confirm("Do you want to go back?");
+        if (i == true) {
+            this.router.navigate(['/']);
+        }
+    }
+
+    checkout() {
+        if (this.orders.length == 0) {
+            alert('Select items!');
+            return;
+        } else {
+            for (var i = 0; i < this.orders.length; i++) {
+                this.description += this.orders[i].name + " - " + this.orders[i].quantity + ", ";
+            }
+            this.order.foodcourt_id = this.id;
+            this.order.description = this.description;
+            this._itemsService.createNewOrder(this.order).subscribe(
+                (data: any) => {
+                    this.router.navigate(['consumer/order-checkout']);
+                },
+                err => console.log(err)
+            );
         }
     }
 }
