@@ -6,7 +6,7 @@
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let foodcourt of foodcourts; index as i">
           <a [routerLink]="['consumer/order', foodcourt.id]">
-            <img src={{foodcourt.img.data.data}} width="auto" height="auto" class="img-responsive"
+            <img src={{foodcourt.img}} width="auto" height="auto" class="img-responsive"
               alt="Generic placeholder thumbnail">
             <h4>{{foodcourt.name}}</h4>
             <span class="text-muted">{{foodcourt.address.locality}} - {{foodcourt.address.city}}</span>

@@ -12,6 +12,7 @@ export class UpdateFoodcourtComponent {
     title = "Update Foodcourt";
     id: any;
     foodcourt: any;
+    base64String: string;
 
     constructor(private _foodcourtService: AppService, private route: ActivatedRoute, private router: Router) {
         this.foodcourt = new Foodcourt();
@@ -34,7 +35,21 @@ export class UpdateFoodcourtComponent {
         }, err => console.log(err));
     }
 
+    onUploadImage(event: any) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = this.handleReaderLoaded.bind(this);
+            reader.readAsBinaryString(file);
+        }
+    }
+
+    handleReaderLoaded(e) {
+        this.base64String = 'data:image/jpg;base64,' + btoa(e.target.result);
+    }
+
     onSubmit(formValue: any) {
+        this.foodcourt.img = this.base64String;
         this._foodcourtService.updateFoodcourt(this.foodcourt).subscribe(
             (data: any) => this.router.navigate(['admin/foodcourts/viewall']),
             err => console.log(err)

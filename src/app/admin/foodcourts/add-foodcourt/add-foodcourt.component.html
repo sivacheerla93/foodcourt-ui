@@ -43,7 +43,8 @@
     </div>
     <div class="form-group">
       <label for="image">Upload Banner Image</label>
-      <input type="file" class="form-control-file" id="image" name="image">
+      <input type="file" class="form-control-file" (change)="onUploadImage($event)" accept=".jpg" id="image"
+        name="image" required>
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Add

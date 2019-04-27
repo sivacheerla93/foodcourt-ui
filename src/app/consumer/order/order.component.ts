@@ -31,15 +31,15 @@ export class OrderComponent implements OnInit {
 
         this._itemsService.getAllItems(this.id).subscribe((data: any) => {
             this.items = data;
-            this.items.forEach(element => {
-                var binary = '';
-                var base64Flag = 'data:image/jpg;base64,';
-                var bytes = [].slice.call(new Uint8Array(element.img.data.data));
-                bytes.forEach((b) => binary += String.fromCharCode(b));
-                var imgStr = window.btoa(binary);
-                var base64Img = base64Flag + imgStr;
-                element.img.data.data = base64Img;
-            });
+            // this.items.forEach(element => {
+            //     var binary = '';
+            //     var base64Flag = 'data:image/jpg;base64,';
+            //     var bytes = [].slice.call(new Uint8Array(element.img.data.data));
+            //     bytes.forEach((b) => binary += String.fromCharCode(b));
+            //     var imgStr = window.btoa(binary);
+            //     var base64Img = base64Flag + imgStr;
+            //     element.img.data.data = base64Img;
+            // });
         }, err => console.log(err));
     }
 

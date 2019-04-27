@@ -8,4 +8,5 @@ export class Foodcourt {
     validity: string;
     locality: string;
     city: string;
+    img: string;
 }

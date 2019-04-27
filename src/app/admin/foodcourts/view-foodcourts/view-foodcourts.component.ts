@@ -25,8 +25,12 @@ export class ViewFoodcourtsComponent {
     }
 
     deleteFoodcourt(foodcourtId) {
-        this._foodcourtsService.deleteFoodcourt(foodcourtId).subscribe(
-            (data: any) => this.getAllFoodcourts(),
-            err => console.log(err));
+        var c = confirm('Deleting foodcourt can also delete orders associated with foodcourt and menu present in the same!');
+        if (c == true) {
+            this._foodcourtsService.deleteFoodcourt(foodcourtId).subscribe(
+                (data: any) => this.getAllFoodcourts(),
+                err => console.log(err)
+            );
+        }
     }
 }
