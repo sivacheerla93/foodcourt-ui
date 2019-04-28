@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 //import * as $ from 'jquery';
 
 @Component({
@@ -9,11 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class AdminSignInComponent implements OnInit {
     title = 'Home';
 
+    constructor(private route: ActivatedRoute, private router: Router) {
+    }
+
     ngOnInit() {
         // $(document).ready(function () {
         //     ($('#signInModal') as any).modal();
         // });
     }
 
+    validate() {
+        let uname = $('#username').val();
+        let pwd = $('#pwd').val();
+        if (uname == 'admin' && pwd == 'admin') {
+            this.router.navigate(['admin/foodcourts/viewall']);
+        } else {
+            alert('Invalid username (or) password!');
+            return;
+        }
+    }
 
 }

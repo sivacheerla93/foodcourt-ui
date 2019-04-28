@@ -12,6 +12,9 @@ import * as $ from 'jquery';
 export class OrderComponent implements OnInit {
     title = 'Home';
     id: any;
+    fName: any;
+    address: any;
+    city: any;
     items: any = [];
     orders = [];
     subtotal: number = 0;
@@ -28,6 +31,15 @@ export class OrderComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             this.id = +params['id'];
         });
+
+        this._itemsService.getSingleFoodcourt(this.id).subscribe(
+            (data: any) => {
+                this.fName = data[0].name;
+                this.address = data[0].address.locality;
+                this.city = data[0].address.city;
+            },
+            err => console.log(err)
+        );
 
         this._itemsService.getAllItems(this.id).subscribe((data: any) => {
             this.items = data;
@@ -124,7 +136,7 @@ export class OrderComponent implements OnInit {
             this.order.description = this.description;
             this._itemsService.createNewOrder(this.order).subscribe(
                 (data: any) => {
-                    this.router.navigate(['consumer/order-checkout']);
+                    this.router.navigate(['consumer/order-checkout/' + data]);
                 },
                 err => console.log(err)
             );

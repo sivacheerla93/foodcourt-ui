@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppService } from '../../../app.service';
 import { Item } from '../../../schemas/Item';
 
@@ -12,9 +12,16 @@ export class AddItemComponent {
     title = "Add Item";
     item: any;
     base64String: string;
+    fId: any;
 
-    constructor(private _itemsService: AppService, private router: Router) {
+    constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
         this.item = new Item();
+    }
+
+    ngOnInit(): void {
+        this.route.params.forEach((params: Params) => {
+            this.fId = +params['id'];
+        });
     }
 
     onUploadImage(event: any) {
@@ -31,10 +38,11 @@ export class AddItemComponent {
     }
 
     onSubmit() {
+        this.item.foodcourt_id = this.fId;
         this.item.img = this.base64String;
         this._itemsService.addItem(this.item).subscribe(
             (data: any) => {
-                this.router.navigate(['vendor/menu/view'])
+                this.router.navigate(['vendor/menu/view/' + this.fId]);
             },
             err => console.log(err)
         );

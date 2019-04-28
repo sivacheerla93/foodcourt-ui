@@ -28,14 +28,14 @@ const appRoutes: Routes = [
   { path: 'admin/foodcourts/add', component: AddFoodcourtComponent },
   { path: 'admin/foodcourts/update/:id', component: UpdateFoodcourtComponent },
   { path: 'vendor/signin', component: VendorSignInComponent },
-  { path: 'vendor/menu/view', component: ViewItemsComponent },
-  { path: 'vendor/menu/add', component: AddItemComponent },
-  { path: 'vendor/menu/update/:id', component: UpdateItemComponent },
-  { path: 'vendor/orders/manage', component: ManageOrdersComponent },
+  { path: 'vendor/menu/view/:id', component: ViewItemsComponent },
+  { path: 'vendor/menu/add/:id', component: AddItemComponent },
+  { path: 'vendor/menu/update/:fid/:id', component: UpdateItemComponent },
+  { path: 'vendor/orders/manage/:fid', component: ManageOrdersComponent },
   { path: 'consumer/signup', component: SignUpComponent },
   { path: 'consumer/signin', component: SignInComponent },
   { path: 'consumer/order/:id', component: OrderComponent },
-  { path: 'consumer/order-checkout', component: CheckoutComponent },
+  { path: 'consumer/order-checkout/:oid', component: CheckoutComponent },
   { path: 'consumer/order-success', component: SuccessComponent }
 ];
 

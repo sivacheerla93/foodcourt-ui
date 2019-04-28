@@ -11,6 +11,7 @@ import { Item } from '../../../schemas/Item';
 export class UpdateItemComponent {
     title = "Update Item";
     id: any;
+    fId: any;
     item: any;
     base64String: string;
 
@@ -21,6 +22,7 @@ export class UpdateItemComponent {
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
             this.id = +params['id'];
+            this.fId = +params['fid'];
         });
         this._itemsService.getSingleItem(this.id).subscribe((data: any) => {
             this.item.id = data[0].id;
@@ -46,7 +48,7 @@ export class UpdateItemComponent {
     onSubmit(formValue: any) {
         this.item.img = this.base64String;
         this._itemsService.updateItem(this.item).subscribe(
-            (data: any) => this.router.navigate(['vendor/menu/view']),
+            (data: any) => this.router.navigate(['vendor/menu/view/' + this.fId]),
             err => console.log(err)
         );
     }

@@ -12,13 +12,16 @@ import * as $ from 'jquery';
 export class CheckoutComponent implements OnInit {
     title = 'Home';
     order: any = [];
+    oid: any;
 
     constructor(private _ordersService: AppService, private route: ActivatedRoute, private router: Router) {
         this.order = new Order();
     }
 
     ngOnInit() {
-
+        this.route.params.forEach((params: Params) => {
+            this.oid = +params['oid'];
+        });
     }
 
     validateFields() {
@@ -33,7 +36,7 @@ export class CheckoutComponent implements OnInit {
             alert('All fields are mandatory!');
             return;
         } else {
-            this.order.id = Number(1100100);
+            this.order.id = Number(this.oid);
             this.order.name = fullname;
             this.order.mobile = mobile;
             this.order.email = email;

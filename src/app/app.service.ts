@@ -35,6 +35,10 @@ export class AppService {
     }
 
     // vendor routes
+    validateVendor(vendor: any) {
+        return this._http.post(this.serviceUrl + "/vendor/validate", JSON.stringify(vendor), this.httpOptions);
+    }
+
     getAllItems(fId) {
         return this._http.get(this.serviceUrl + "/vendor/items/foodcourt/" + fId);
     }

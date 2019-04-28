@@ -1,6 +1,6 @@
 <!-- All Items -->
 <div class="container">
-  <h3 class="page-header text-center">KFC Chennai - Manage Items</h3>
+  <h3 class="page-header text-center">{{fId}} - {{fName}}</h3>
   <div class="col-md-12">
     <div class="col-md-6">
       <div class="input-group">
@@ -11,10 +11,10 @@
       </div>
     </div>
     <div class="col-md-3 text-center">
-      <a routerLink="/vendor/menu/add" class="btn btn-success">Add New Item</a>
+      <a routerLink="/vendor/menu/add/{{fId}}" class="btn btn-success">Add New Item</a>
     </div>
     <div class="col-md-3 text-center">
-      <a routerLink="/vendor/orders/manage" class="btn btn-warning">View Live Orders</a>
+      <a routerLink="/vendor/orders/manage/{{fId}}" class="btn btn-warning">View Live Orders</a>
     </div>
   </div>
   <br />
@@ -41,7 +41,7 @@
           <td>{{item.name}}</td>
           <td>{{item.price}}</td>
           <td>{{item.availability}}</td>
-          <td><a [routerLink]="['/vendor/menu/update', item.id]" class="btn btn-primary">Update</a></td>
+          <td><a [routerLink]="['/vendor/menu/update', fId, item.id]" class="btn btn-primary">Update</a></td>
           <td><a (click)="deleteItem(item.id)" class="btn btn-danger">Delete</a></td>
         </tr>
       </tbody>
