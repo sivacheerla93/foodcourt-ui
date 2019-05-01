@@ -133,7 +133,9 @@ export class OrderComponent implements OnInit {
                 this.description += this.orders[i].name + " - " + this.orders[i].quantity + ", ";
             }
             this.order.foodcourt_id = this.id;
+            this.order.fname = this.fName;
             this.order.description = this.description;
+            this.order.amount = this.total;
             this._itemsService.createNewOrder(this.order).subscribe(
                 (data: any) => {
                     this.router.navigate(['consumer/order-checkout/' + data]);

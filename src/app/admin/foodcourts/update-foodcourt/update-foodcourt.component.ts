@@ -13,6 +13,7 @@ export class UpdateFoodcourtComponent {
     id: any;
     foodcourt: any;
     base64String: string;
+    formValue: any;
 
     constructor(private _foodcourtService: AppService, private route: ActivatedRoute, private router: Router) {
         this.foodcourt = new Foodcourt();

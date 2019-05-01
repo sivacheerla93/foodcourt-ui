@@ -14,6 +14,7 @@ export class UpdateItemComponent {
     fId: any;
     item: any;
     base64String: string;
+    formValue: any;
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
         this.item = new Item();

@@ -30,9 +30,8 @@ export class CheckoutComponent implements OnInit {
         let email = $('#email').val();
         let address = $('#address').val();
         let city = $('#city').val();
-        let paytmNumber = $('#paytmNumber').val();
 
-        if (fullname == '' || mobile == '' || email == '' || address == '' || city == '' || paytmNumber == '') {
+        if (fullname == '' || mobile == '' || email == '' || address == '' || city == '') {
             alert('All fields are mandatory!');
             return;
         } else {
@@ -45,7 +44,7 @@ export class CheckoutComponent implements OnInit {
 
             this._ordersService.updateOrder(this.order).subscribe(
                 (data: any) => {
-                    this.router.navigate(['consumer/order-success']);
+                    window.location.href = '/callPaymentPage/' + data;
                 },
                 err => console.log(err)
             );
