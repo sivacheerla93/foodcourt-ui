@@ -1,18 +1,13 @@
-<!-- All Food courts -->
-<div class="container" style="text-align: center;">
-  <div class="row">
-    <div class="col-sm-12">
-      <h3 class="page-header text-center" style="padding-top: 20px;">All Food courts</h3>
-      <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let foodcourt of foodcourts; index as i">
-          <a [routerLink]="['consumer/order', foodcourt.id]">
-            <img src={{foodcourt.img}} width="auto" height="auto" class="img-responsive"
-              alt="Generic placeholder thumbnail">
-            <h4>{{foodcourt.name}}</h4>
-            <span class="text-muted">{{foodcourt.address.locality}} - {{foodcourt.address.city}}</span>
-          </a>
-        </div>
-      </div>
+<!-- All Food courts in your location! -->
+<div class="container-fluid">
+  <div class="row" style="text-align: center;">
+    <h3 class="page-header text-center" style="padding-top: 10px;">All Food courts in your location!</h3>
+    <div class="col-lg-4" *ngFor="let foodcourt of foodcourts; index as i">
+      <img class="img-circle" src={{foodcourt.img}} alt="Generic placeholder image" width="150" height="150">
+      <h3>{{foodcourt.name}}</h3>
+      <p>{{foodcourt.address.locality}} - {{foodcourt.address.city}}</p>
+      <p><a class="btn btn-primary" [routerLink]="['consumer/order', foodcourt.id]" role="button">Order Food Online
+          »</a></p>
     </div>
   </div>
 </div>
@@ -30,11 +25,11 @@
         </ol>
         <div class="carousel-inner">
           <div class="item active">
-            <a routerLink="consumer/order">
+            <a href="#">
               <img src="./assets/images/courasel/img1.jpg" alt="First slide">
               <div class="carousel-caption">
                 <h3>
-                  First slide</h3>
+                  Foodcourt - 1</h3>
                 <p>
                   Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
@@ -42,22 +37,22 @@
           </div>
 
           <div class="item">
-            <a routerLink="consumer/order">
+            <a href="#">
               <img src="./assets/images/courasel/img2.jpg" alt="Second slide">
               <div class="carousel-caption">
                 <h3>
-                  Second slide</h3>
+                  Foodcourt - 2</h3>
                 <p>
                   Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </a>
           </div>
           <div class="item">
-            <a routerLink="consumer/order">
+            <a href="#">
               <img src="./assets/images/courasel/img3.jpg" alt="Third slide">
               <div class="carousel-caption">
                 <h3>
-                  Third slide</h3>
+                  Foodcourt - 3</h3>
                 <p>
                   Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
@@ -73,36 +68,41 @@
   </div>
 </div>
 
-<!-- Favourite Food courts in your location! -->
-<div class="container-fluid">
-  <div class="row" style="text-align: center;">
-    <h3 class="page-header text-center" style="padding-top: 50px;">Favourite Food courts in your location!</h3>
-    <div class="col-lg-4">
-      <img class="img-circle" src="./assets/images/favourite/img1.jpg" alt="Generic placeholder image" width="140"
-        height="140">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula
-        ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <img class="img-circle" src="./assets/images/favourite/img2.jpg" alt="Generic placeholder image" width="140"
-        height="140">
-      <h2>Heading</h2>
-      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis
-        consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
-      </p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <img class="img-circle" src="./assets/images/favourite/img3.jpg" alt="Generic placeholder image" width="140"
-        height="140">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-        felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-        massa
-        justo sit amet risus.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
+<!-- Top Rated Food courts -->
+<div class="container" style="text-align: center;">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="page-header text-center" style="padding-top: 50px;">Top Rated Food courts!</h3>
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="./assets/images/all/img1.jpg" width="auto" height="auto" class="img-responsive"
+              alt="Generic placeholder thumbnail">
+            <h4>Foodcourt - 1</h4>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="./assets/images/all/img2.jpg" width="auto" height="auto" class="img-responsive"
+              alt="Generic placeholder thumbnail">
+            <h4>Foodcourt - 2</h4>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="./assets/images/all/img3.jpg" width="auto" height="auto" class="img-responsive"
+              alt="Generic placeholder thumbnail">
+            <h4>Foodcourt - 3</h4>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="./assets/images/all/img4.jpg" width="auto" height="auto" class="img-responsive"
+              alt="Generic placeholder thumbnail">
+            <h4>Foodcourt - 4</h4>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

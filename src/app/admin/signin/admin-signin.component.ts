@@ -22,7 +22,7 @@ export class AdminSignInComponent implements OnInit {
     validate() {
         let uname = $('#username').val();
         let pwd = $('#pwd').val();
-        if (uname == 'admin' && pwd == 'admin') {
+        if (uname == 'admin' && pwd == 'foodcourt456') {
             this.router.navigate(['admin/foodcourts/viewall']);
         } else {
             alert('Invalid username (or) password!');

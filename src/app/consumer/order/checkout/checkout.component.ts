@@ -26,13 +26,23 @@ export class CheckoutComponent implements OnInit {
 
     validateFields() {
         let fullname = $('#fullname').val();
-        let mobile = $('#mobile').val();
-        let email = $('#email').val();
+        let mobile = ($('#mobile').val()).toString();
+        let email = ($('#email').val()).toString();
         let address = $('#address').val();
         let city = $('#city').val();
+        var checkMobile = /^[6789]\d{9}$/;
+        var checkEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
         if (fullname == '' || mobile == '' || email == '' || address == '' || city == '') {
             alert('All fields are mandatory!');
+            return;
+        } else if (!(checkMobile.test(mobile))) {
+            alert('Invalid mobile number!');
+            $('#mobile').focus();
+            return;
+        } else if (!(checkEmail.test(email))) {
+            alert('Invalid email address!');
+            $('#email').focus();
             return;
         } else {
             this.order.id = Number(this.oid);

@@ -14,6 +14,4 @@ export class SuccessComponent implements OnInit {
             ($('#myModal') as any).modal();
         });
     }
-
-
 }
