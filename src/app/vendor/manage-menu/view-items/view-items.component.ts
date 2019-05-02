@@ -12,6 +12,8 @@ export class ViewItemsComponent {
     fId: any;
     fName: any;
     items: any = [];
+    private token: string;
+    st: string;
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
     }
@@ -27,6 +29,13 @@ export class ViewItemsComponent {
             err => console.log(err)
         );
         this.getAllItems(this.fId);
+    }
+
+    private getToken(): string {
+        if (!this.token) {
+            this.token = localStorage.getItem('mean-token');
+        }
+        return this.token;
     }
 
     getAllItems(fId) {

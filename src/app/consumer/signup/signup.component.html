@@ -1,64 +1,74 @@
 <div class="signup-form">
-  <form>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()">
     <h2 class="text-center">Sign Up</h2>
     <p class="text-center">Please fill in this form to create an account!</p>
     <hr>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Username" [(ngModel)]="consumer.name"
+          required #nameRef="ngModel">
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-        <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"
+          [(ngModel)]="consumer.email" required #emailRef="ngModel">
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-        <input type="text" class="form-control" name="mobile" placeholder="Mobile Number" required="required">
+        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number"
+          [(ngModel)]="consumer.mobile" required #mobileRef="ngModel">
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-        <input type="text" class="form-control" name="password" placeholder="Password" required="required">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <i class="fa fa-lock"></i>
-          <i class="fa fa-check"></i>
-        </span>
-        <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password"
-          required="required">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+          [(ngModel)]="consumer.password" required #passwordRef="ngModel">
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-home"></i></span>
-        <input type="text" class="form-control" name="city" placeholder="City Name" required="required">
+        <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+          [(ngModel)]="consumer.address" required #addressRef="ngModel">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+        <input type="text" class="form-control" name="city" placeholder="City" [(ngModel)]="consumer.city" required
+          #cityRef="ngModel">
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-        <input type="text" class="form-control" name="date" placeholder="Date Of Birth Ex: 10/15/1990"
+        <input type="text" class="form-control" id="date" name="date" placeholder="Date Of Birth Ex: 10/15/1990"
           required="required">
       </div>
     </div>
-    <div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+        <input type="text" class="form-control" id="gender" [(ngModel)]="consumer.gender" name="gender"
+          placeholder="Gender Ex: Male (or) Female " required="required">
+      </div>
+    </div>
+    <!-- <div>
       <span>Gender:</span>&nbsp;&nbsp;&nbsp;&nbsp;
       <label class="radio-inline">
-        <input type="radio" name="optradio" checked>Male
+        <input type="radio" id="gender" [(ngModel)]="consumer.gender" name="optradio">Male
       </label>
       <label class="radio-inline">
-        <input type="radio" name="optradio">Female
+        <input type="radio" id="gender" [(ngModel)]="consumer.gender" name="optradio">Female
       </label>
-    </div>
+    </div> -->
     <br />
     <div class="form-group text-center">
       <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
@@ -66,8 +76,8 @@
         &amp; <a href="#">Privacy Policy</a></label>
     </div>
     <div class="form-group text-center">
-      <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+      <button type="submit" class="btn btn-info" [disabled]="formRef.invalid">Submit</button>
     </div>
   </form>
-  <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+  <div class="text-center">Already have an account? <a [routerLink]="['/consumer/signin']">Login here</a></div>
 </div>

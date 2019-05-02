@@ -13,12 +13,29 @@ export class CheckoutComponent implements OnInit {
     title = 'Home';
     order: any = [];
     oid: any;
+    name: any;
+    mobile: any;
+    email: any;
+    address: any;
+    city: any;
+    user: any;
+    private token = localStorage.getItem('mean-token');
 
     constructor(private _ordersService: AppService, private route: ActivatedRoute, private router: Router) {
         this.order = new Order();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this._ordersService.verifyuser(this.token).subscribe(
+            (data: any) => {
+                this.name = data.userinfo[0].name;
+                this.mobile = data.userinfo[0].mobile;
+                this.email = data.userinfo[0].email;
+                this.address = data.userinfo[0].address;
+                this.city = data.userinfo[0].city;
+            }, err => console.log(err)
+        );
+
         this.route.params.forEach((params: Params) => {
             this.oid = +params['oid'];
         });

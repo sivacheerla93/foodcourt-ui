@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AppService {
     private serviceUrl = 'http://localhost:3000/';
+
+    public token = localStorage.getItem('mean-token');
+
     private httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
@@ -11,6 +14,7 @@ export class AppService {
     };
 
     constructor(private _http: HttpClient) {
+        console.log("Initializing");
     }
 
     // admin routes
@@ -61,6 +65,19 @@ export class AppService {
 
     getAllOrders(fId) {
         return this._http.get(this.serviceUrl + "consumer/orders/" + fId);
+    }
+
+    //consumer routes
+    registeruser(user: any) {
+        return this._http.post(this.serviceUrl + "user/register", JSON.stringify(user), this.httpOptions);
+    }
+
+    validateUser(user: any) {
+        return this._http.post(this.serviceUrl + "user/authenticate", JSON.stringify(user), this.httpOptions);
+    }
+
+    verifyuser(tok) {
+        return this._http.post(this.serviceUrl + "user/loginverify/verify", { token: tok }, this.httpOptions);
     }
 
     createNewOrder(order: any) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'admin-signin-root',

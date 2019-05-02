@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppService } from '../../app.service';
 import { Vendor } from '../../schemas/Vendor';
-//import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'vendor-signin-root',

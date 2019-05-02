@@ -22,12 +22,37 @@ export class OrderComponent implements OnInit {
     total: number = 0;
     description: string = '';
     order: any;
+    private token: String;
 
     constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
         this.order = new Order();
     }
 
     ngOnInit() {
+        this.token = localStorage.getItem('mean-token');
+
+        this._itemsService.verifyuser(this.token).subscribe(
+            (data: any) => {
+                if (data.status == 'error') {
+                    if (data.message == 'jwt expired') {
+                        alert("Please login,session Expired");
+                        this.router.navigate(['consumer/signin']);
+                        return;
+                    }
+                    else if (data.message == 'invalid token') {
+                        alert("invalid login, Please Login Again");
+                        this.router.navigate(['consumer/signin']);
+                        return;
+                    }
+                } else if (data.status == 'success') {
+                    console.log("88888888888888888888888888888");
+                    console.log(data.userinfo);
+                }
+                console.log(data.status);
+                console.log(data.message);
+            }
+        );
+
         this.route.params.forEach((params: Params) => {
             this.id = +params['id'];
         });
@@ -126,10 +151,41 @@ export class OrderComponent implements OnInit {
             this.order.foodcourt_id = this.id;
             this.order.fname = this.fName;
             this.order.description = this.description;
+            this.order.token = this.token;
             this.order.amount = this.total;
             this._itemsService.createNewOrder(this.order).subscribe(
                 (data: any) => {
-                    this.router.navigate(['consumer/order-checkout/' + data]);
+                    console.log('CHECKOUT' + data.status);
+                    if (data.status == 'error') {
+                        alert("Please login");
+                        this.router.navigate(['consumer/signin']);
+                        return;
+                    } else if (data.status == 'success') {
+
+                        /* this._itemsService.verifyuser(this.token).subscribe(
+                            (data:any)=>{
+                                console.log(this.token);
+                                if (data.status == 'error') {
+                                    if(data.message=='jwt expired')
+                                    {
+                                    alert("Please login,session Expired");
+                                    this.router.navigate(['consumer/signin']);
+                                    return;
+                                    }
+                                    else if(data.message == 'invalid token')
+                                    {
+                                        alert("invalid login, Please Login Again");
+                                        this.router.navigate(['consumer/signin']);
+                                        return;  
+                                    }
+                                } else if (data.status == 'success') {
+                                    console.log(data.status);
+                console.log(data.userinfo)
+                
+                }})*/
+                        console.log(data.idval);
+                        this.router.navigate(['consumer/order-checkout/' + data.idval]);
+                    }
                 },
                 err => console.log(err)
             );
