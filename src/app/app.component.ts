@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'foodcourt-ui';
+ 
+constructor(private router: Router) {
 }
+
+
+ logout(){
+    window.localStorage.removeItem('mean-token');
+    this.router.navigateByUrl('/');
+    alert("Logout Successfully!!");
+  }
+}
+

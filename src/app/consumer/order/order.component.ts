@@ -34,6 +34,14 @@ export class OrderComponent implements OnInit {
         this._itemsService.verifyuser(this.token).subscribe(
             (data: any) => {
                 if (data.status == 'error') {
+                    
+                        if(data.message == 'jwt must be provided')
+                        {
+                            alert('Please login!');
+                            this.router.navigateByUrl('/consumer/signin');
+                        
+                        return;
+                    }
                     if (data.message == 'jwt expired') {
                         alert("Please login,session Expired");
                         this.router.navigate(['consumer/signin']);
@@ -47,28 +55,30 @@ export class OrderComponent implements OnInit {
                 } else if (data.status == 'success') {
                     console.log("88888888888888888888888888888");
                     console.log(data.userinfo);
+
+                    this.route.params.forEach((params: Params) => {
+                        this.id = +params['id'];
+                    });
+            
+                    this._itemsService.getSingleFoodcourt(this.id).subscribe(
+                        (data: any) => {
+                            this.fName = data[0].name;
+                            this.address = data[0].address.locality;
+                            this.city = data[0].address.city;
+                        },
+                        err => console.log(err)
+                    );
+            
+                    this._itemsService.getAllItems(this.id).subscribe((data: any) => {
+                        this.items = data;
+                    }, err => console.log(err));
                 }
                 console.log(data.status);
                 console.log(data.message);
             }
         );
 
-        this.route.params.forEach((params: Params) => {
-            this.id = +params['id'];
-        });
-
-        this._itemsService.getSingleFoodcourt(this.id).subscribe(
-            (data: any) => {
-                this.fName = data[0].name;
-                this.address = data[0].address.locality;
-                this.city = data[0].address.city;
-            },
-            err => console.log(err)
-        );
-
-        this._itemsService.getAllItems(this.id).subscribe((data: any) => {
-            this.items = data;
-        }, err => console.log(err));
+       
     }
 
     addItem(itemNo, itemName, itemPrice) {
