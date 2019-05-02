@@ -34,20 +34,15 @@ export class OrderComponent implements OnInit {
         this._itemsService.verifyuser(this.token).subscribe(
             (data: any) => {
                 if (data.status == 'error') {
-                    
-                        if(data.message == 'jwt must be provided')
-                        {
-                            alert('Please login!');
-                            this.router.navigateByUrl('/consumer/signin');
-                        
+                    if (data.message == 'jwt must be provided') {
+                        alert('Please login!');
+                        this.router.navigateByUrl('/consumer/signin');
                         return;
-                    }
-                    if (data.message == 'jwt expired') {
+                    } else if (data.message == 'jwt expired') {
                         alert("Please login,session Expired");
                         this.router.navigate(['consumer/signin']);
                         return;
-                    }
-                    else if (data.message == 'invalid token') {
+                    } else if (data.message == 'invalid token') {
                         alert("invalid login, Please Login Again");
                         this.router.navigate(['consumer/signin']);
                         return;
@@ -59,7 +54,7 @@ export class OrderComponent implements OnInit {
                     this.route.params.forEach((params: Params) => {
                         this.id = +params['id'];
                     });
-            
+
                     this._itemsService.getSingleFoodcourt(this.id).subscribe(
                         (data: any) => {
                             this.fName = data[0].name;
@@ -68,7 +63,7 @@ export class OrderComponent implements OnInit {
                         },
                         err => console.log(err)
                     );
-            
+
                     this._itemsService.getAllItems(this.id).subscribe((data: any) => {
                         this.items = data;
                     }, err => console.log(err));
@@ -77,8 +72,6 @@ export class OrderComponent implements OnInit {
                 console.log(data.message);
             }
         );
-
-       
     }
 
     addItem(itemNo, itemName, itemPrice) {

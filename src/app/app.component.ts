@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'foodcourt-ui';
- 
-constructor(private router: Router) {
-}
 
+  constructor(private router: Router) {
+  }
 
- logout(){
+  logout() {
     window.localStorage.removeItem('mean-token');
     this.router.navigateByUrl('/');
     alert("Logout Successfully!!");

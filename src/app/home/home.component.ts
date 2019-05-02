@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-    import { AppService } from '../app.service';
-    import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AppService } from '../app.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 //import * as $ from 'jquery';
 
 @Component({
@@ -21,37 +21,28 @@ export class HomeComponent implements OnInit {
         this._foodcourtsService.verifyuser(this.token).subscribe(
             (data: any) => {
                 if (data.status == 'error') {
-                    
-                        if(data.message == 'jwt must be provided')
-                        {
-                            this.router.navigateByUrl('/consumer/signin');
-                        
+                    if (data.message == 'jwt must be provided') {
+                        this.router.navigateByUrl('/consumer/signin');
                         return;
-                    }
-                    if (data.message == 'jwt expired') {
-                       console.log('session Expired');
+                    } else if (data.message == 'jwt expired') {
+                        console.log('session Expired');
                         this.router.navigate(['consumer/signin']);
                         return;
-                    }
-                    else if (data.message == 'invalid token') {
+                    } else if (data.message == 'invalid token') {
                         console.log('Invalid login');
                         this.router.navigate(['consumer/signin']);
                         return;
                     }
                 } else if (data.status == 'success') {
-        
+                    this.getAllFoodcourts();
+                    //alert(this.token);
 
-
-
-        this.getAllFoodcourts();
-
-        
-        //alert(this.token);
-
-        //$(document).ready(function () {
-          //  ($('.carousel') as any).carousel();
-        //});
-    }});}
+                    $(document).ready(function () {
+                        ($('.carousel') as any).carousel();
+                    });
+                }
+            });
+    }
 
     private getToken(): string {
         if (!this.token) {
