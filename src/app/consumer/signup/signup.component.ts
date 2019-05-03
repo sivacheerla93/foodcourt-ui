@@ -12,7 +12,6 @@ import { RegisterUser } from '../../schemas/registeruser';
 export class SignUpComponent implements OnInit {
     title = 'Home';
     consumer: any;
-    base64String: string;
 
     constructor(private _RegisterService: AppService, private router: Router) {
         this.consumer = new RegisterUser();
@@ -22,29 +21,33 @@ export class SignUpComponent implements OnInit {
 
     }
 
-    /* onUploadImage(event: any) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = this.handleReaderLoaded.bind(this);
-            reader.readAsBinaryString(file);
-        }
-      }
-
-     handleReaderLoaded(e) {
-        this.base64String = 'data:image/jpg;base64,' + btoa(e.target.result);
-    }*/
-
     onSubmit() {
-        console.log('submit');
-        //this.consumer.img = this.base64String;
-        this._RegisterService.registeruser(this.consumer).subscribe(
-            (data: any) => {
-                console.log(data.status);
-                this.router.navigate(['consumer/signin']);
-                err => console.log(err)
-            }
-        );
-    }
+        let mobile = ($('#mobile').val()).toString();
+        let email = ($('#email').val()).toString();
+        var checkMobile = /^[6789]\d{9}$/;
+        var checkEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
+        if (!(checkMobile.test(mobile))) {
+            alert('Invalid mobile number!');
+            $('#mobile').focus();
+            return;
+        } else if (!(checkEmail.test(email))) {
+            alert('Invalid email address!');
+            $('#email').focus();
+            return;
+        } else {
+            this._RegisterService.registeruser(this.consumer).subscribe(
+                (data: any) => {
+                    if (data.status == 'success') {
+                        this.router.navigate(['consumer/signin']);
+                    }
+                    else if (data.status == 'User already exists') {
+                        alert('Entered email address already registered with us!');
+                        return;
+                    }
+                    err => console.log(err)
+                }
+            );
+        }
+    }
 }

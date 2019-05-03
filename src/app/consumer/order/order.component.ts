@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppService } from '../../app.service';
+import { SharedService } from '../../shared-service';
 import { Order } from '../../schemas/Order';
 import * as $ from 'jquery';
 
@@ -22,9 +23,10 @@ export class OrderComponent implements OnInit {
     total: number = 0;
     description: string = '';
     order: any;
+    name: any;
     private token: String;
 
-    constructor(private _itemsService: AppService, private route: ActivatedRoute, private router: Router) {
+    constructor(private _itemsService: AppService, private _sharedService: SharedService, private route: ActivatedRoute, private router: Router) {
         this.order = new Order();
     }
 
@@ -35,22 +37,24 @@ export class OrderComponent implements OnInit {
             (data: any) => {
                 if (data.status == 'error') {
                     if (data.message == 'jwt must be provided') {
+                        this._sharedService.emitChange('failed');
                         alert('Please login!');
                         this.router.navigateByUrl('/consumer/signin');
                         return;
                     } else if (data.message == 'jwt expired') {
-                        alert("Please login,session Expired");
+                        this._sharedService.emitChange('failed');
+                        alert("Please login again! session has been expired!!");
                         this.router.navigate(['consumer/signin']);
                         return;
                     } else if (data.message == 'invalid token') {
-                        alert("invalid login, Please Login Again");
+                        this._sharedService.emitChange('failed');
+                        alert("Invalid login! Please login again!!");
                         this.router.navigate(['consumer/signin']);
                         return;
                     }
                 } else if (data.status == 'success') {
-                    console.log("88888888888888888888888888888");
-                    console.log(data.userinfo);
-
+                    this.name = data.userinfo[0].name;
+                    this._sharedService.emitChange(this.name);
                     this.route.params.forEach((params: Params) => {
                         this.id = +params['id'];
                     });
@@ -68,8 +72,6 @@ export class OrderComponent implements OnInit {
                         this.items = data;
                     }, err => console.log(err));
                 }
-                console.log(data.status);
-                console.log(data.message);
             }
         );
     }
@@ -158,35 +160,13 @@ export class OrderComponent implements OnInit {
             this.order.amount = this.total;
             this._itemsService.createNewOrder(this.order).subscribe(
                 (data: any) => {
-                    console.log('CHECKOUT' + data.status);
                     if (data.status == 'error') {
-                        alert("Please login");
+                        this._sharedService.emitChange('failed');
+                        alert("Please login!");
                         this.router.navigate(['consumer/signin']);
                         return;
                     } else if (data.status == 'success') {
-
-                        /* this._itemsService.verifyuser(this.token).subscribe(
-                            (data:any)=>{
-                                console.log(this.token);
-                                if (data.status == 'error') {
-                                    if(data.message=='jwt expired')
-                                    {
-                                    alert("Please login,session Expired");
-                                    this.router.navigate(['consumer/signin']);
-                                    return;
-                                    }
-                                    else if(data.message == 'invalid token')
-                                    {
-                                        alert("invalid login, Please Login Again");
-                                        this.router.navigate(['consumer/signin']);
-                                        return;  
-                                    }
-                                } else if (data.status == 'success') {
-                                    console.log(data.status);
-                console.log(data.userinfo)
-                
-                }})*/
-                        console.log(data.idval);
+                        this._sharedService.emitChange(this.name);
                         this.router.navigate(['consumer/order-checkout/' + data.idval]);
                     }
                 },

@@ -15,7 +15,6 @@ export class AppService {
     };
 
     constructor(private _http: HttpClient) {
-        console.log("Initializing");
     }
 
     // admin routes

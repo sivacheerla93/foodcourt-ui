@@ -18,9 +18,6 @@ export class VendorSignInComponent implements OnInit {
     }
 
     ngOnInit() {
-        // $(document).ready(function () {
-        //     ($('#signInModal') as any).modal();
-        // });
     }
 
     validateVendor() {
@@ -35,7 +32,6 @@ export class VendorSignInComponent implements OnInit {
             this.vendor.pwd = pwd;
             this._vendorService.validateVendor(this.vendor).subscribe(
                 (data: any) => {
-                    //this.router.navigate(['consumer/order-checkout']);
                     if (data.status == 'not found') {
                         alert(data.fId + " not found!");
                         return;
@@ -53,6 +49,4 @@ export class VendorSignInComponent implements OnInit {
             );
         }
     }
-
-
 }

@@ -14,14 +14,12 @@ export class AdminSignInComponent implements OnInit {
     }
 
     ngOnInit() {
-        // $(document).ready(function () {
-        //     ($('#signInModal') as any).modal();
-        // });
     }
 
     validate() {
-        let uname = $('#username').val();
+        let uname = $('#user').val();
         let pwd = $('#pwd').val();
+
         if (uname == 'admin' && pwd == 'foodcourt456') {
             this.router.navigate(['admin/foodcourts/viewall']);
         } else {
@@ -29,5 +27,4 @@ export class AdminSignInComponent implements OnInit {
             return;
         }
     }
-
 }

@@ -1,5 +1,8 @@
 <div class="signup-form">
   <form #formRef="ngForm" (ngSubmit)="onSubmit()">
+    <div class="alert alert-success" role="alert">
+      <u><b>Note: Please enter an active email address to get verification codes and order updates!</b></u>
+    </div>
     <h2 class="text-center">Sign Up</h2>
     <p class="text-center">Please fill in this form to create an account!</p>
     <hr>
@@ -60,15 +63,6 @@
           placeholder="Gender Ex: Male (or) Female " required="required">
       </div>
     </div>
-    <!-- <div>
-      <span>Gender:</span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <label class="radio-inline">
-        <input type="radio" id="gender" [(ngModel)]="consumer.gender" name="optradio">Male
-      </label>
-      <label class="radio-inline">
-        <input type="radio" id="gender" [(ngModel)]="consumer.gender" name="optradio">Female
-      </label>
-    </div> -->
     <br />
     <div class="form-group text-center">
       <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
