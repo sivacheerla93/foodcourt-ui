@@ -31,13 +31,6 @@ export class ViewItemsComponent {
         this.getAllItems(this.fId);
     }
 
-    private getToken(): string {
-        if (!this.token) {
-            this.token = localStorage.getItem('mean-token');
-        }
-        return this.token;
-    }
-
     getAllItems(fId) {
         this._itemsService.getAllItems(fId).subscribe(
             (_items: any) => {

@@ -11,8 +11,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a routerLink="vendor/signin">Vendor</a></li>
-        <li><a routerLink="admin/signin">Admin</a></li>
+        <li><a (click)="vendorSignIn()" style="cursor: pointer;">Vendor</a></li>
+        <li><a (click)="adminSignIn()" style="cursor: pointer;">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="username"></a></li>

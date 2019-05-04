@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../../app.service';
-import { RegisterUser } from '../../schemas/registeruser';
+import { RegisterUser } from '../../schemas/RegisterUser';
 //import * as $ from 'jquery';
 
 @Component({

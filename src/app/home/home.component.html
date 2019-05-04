@@ -6,7 +6,7 @@
       <img class="img-circle" src={{foodcourt.img}} alt="Generic placeholder image" width="150" height="150">
       <h3>{{foodcourt.name}}</h3>
       <p>{{foodcourt.address.locality}} - {{foodcourt.address.city}}</p>
-      <p><a class="btn btn-primary" [routerLink]="['consumer/order', foodcourt.id]" role="button">Order Food Online
+      <p><a class="btn btn-primary" (click)="validateUserAndproceed(foodcourt.id)" role="button">Order Food Online
           »</a></p>
     </div>
   </div>

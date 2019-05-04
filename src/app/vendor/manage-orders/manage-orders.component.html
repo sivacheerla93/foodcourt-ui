@@ -22,20 +22,26 @@
             {{order.description}}
           </td>
           <td>
-            <table>
-              <tr>
-                {{order.delivery.name}},
-              </tr>
-              <tr>
-                {{order.delivery.mobile}},
-              </tr>
-              <tr>
-                {{order.delivery.locality}},
-              </tr>
-              <tr>
-                {{order.delivery.city}}.
-              </tr>
-            </table>
+            <div *ngIf="order.delivery; else templateName">
+              <table>
+                <tr>
+                  {{order.delivery.name}},
+                </tr>
+                <tr>
+                  {{order.delivery.mobile}},
+                </tr>
+                <tr>
+                  {{order.delivery.locality}},
+                </tr>
+                <tr>
+                  {{order.delivery.city}}.
+                </tr>
+              </table>
+            </div>
+            <ng-template #templateName>
+              Order is not completed! <br />
+              Skipped address and payment!!
+            </ng-template>
           </td>
         </tr>
       </tbody>

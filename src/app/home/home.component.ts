@@ -12,6 +12,7 @@ import { SharedService } from '../shared-service';
 export class HomeComponent implements OnInit {
     private token: string;
     title = 'Home';
+    userData: any;
     foodcourts: any = [];
     name: any;
 
@@ -22,37 +23,20 @@ export class HomeComponent implements OnInit {
         this.token = localStorage.getItem('mean-token');
         this._foodcourtsService.verifyuser(this.token).subscribe(
             (data: any) => {
-                if (data.status == 'error') {
-                    if (data.message == 'jwt must be provided') {
-                        this._sharedService.emitChange('failed');
-                        this.router.navigateByUrl('/consumer/signin');
-                        return;
-                    } else if (data.message == 'jwt expired') {
-                        this._sharedService.emitChange('failed');
-                        this.router.navigate(['consumer/signin']);
-                        return;
-                    } else if (data.message == 'invalid token') {
-                        this._sharedService.emitChange('failed');
-                        this.router.navigate(['consumer/signin']);
-                        return;
-                    }
-                } else if (data.status == 'success') {
-                    this.name = data.userinfo[0].name;
+                this.userData = data;
+                if (this.userData.status == 'error') {
+                    this._sharedService.emitChange('failed');
+                } else if (this.userData.status == 'success') {
+                    this.name = this.userData.userinfo[0].name;
                     this._sharedService.emitChange(this.name);
-                    this.getAllFoodcourts();
                 }
             });
+
+        this.getAllFoodcourts();
 
         $(document).ready(function () {
             ($('.carousel') as any).carousel();
         });
-    }
-
-    private getToken(): string {
-        if (!this.token) {
-            this.token = localStorage.getItem('mean-token');
-        }
-        return this.token;
     }
 
     getAllFoodcourts() {
@@ -63,5 +47,13 @@ export class HomeComponent implements OnInit {
             err => console.log(err)
         );
     }
-}
 
+    validateUserAndproceed(fId) {
+        if (localStorage.getItem('mean-token') == null) {
+            alert('Please do login!');
+            this.router.navigate(['consumer/signin']);
+        } else if (localStorage.getItem('mean-token') != null) {
+            this.router.navigate(['consumer/order/' + fId]);
+        }
+    }
+}

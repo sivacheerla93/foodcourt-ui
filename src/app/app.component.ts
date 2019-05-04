@@ -29,7 +29,27 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(document).on('click', function () {
+      ($('.collapse') as any).collapse('hide');
+    });
+  }
 
+  vendorSignIn() {
+    if (localStorage.getItem('mean-token') == null) {
+      this.router.navigate(['vendor/signin']);
+    } else if (localStorage.getItem('mean-token') != null) {
+      alert('A consumer has been logged in! Please do logout first!!');
+      return;
+    }
+  }
+
+  adminSignIn() {
+    if (localStorage.getItem('mean-token') == null) {
+      this.router.navigate(['admin/signin']);
+    } else if (localStorage.getItem('mean-token') != null) {
+      alert('A consumer has been logged in! Please do logout first!!');
+      return;
+    }
   }
 
   logout() {
